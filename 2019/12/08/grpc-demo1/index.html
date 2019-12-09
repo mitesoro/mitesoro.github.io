@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="grpc 入门新建 .proto 文件，例如 helloworld.proto syntax &amp;#x3D; &amp;quot;proto3&amp;quot;;option go_package&amp;#x3D; &amp;quot;pb&amp;quot;;package helloworld;message HelloRequest &amp;#123;    string name &amp;#x3D; 1;    int32 index &amp;">
+    <meta name="description" content="grpc 入门新建 .proto 文件，例如 helloworld.protosyntax &amp;#x3D; &amp;quot;proto3&amp;quot;;option go_package&amp;#x3D; &amp;quot;pb&amp;quot;;package helloworld;message HelloRequest &amp;#123;    string name &amp;#x3D; 1;    int32 index &amp;#">
 <meta name="keywords" content="grpc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="grpc 基础（1）实现一个服务">
+<meta property="og:title" content="【grpc基础】（1）实现一个服务">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;12&#x2F;08&#x2F;grpc-demo1&#x2F;index.html">
 <meta property="og:site_name" content="mi tesoro">
-<meta property="og:description" content="grpc 入门新建 .proto 文件，例如 helloworld.proto syntax &amp;#x3D; &amp;quot;proto3&amp;quot;;option go_package&amp;#x3D; &amp;quot;pb&amp;quot;;package helloworld;message HelloRequest &amp;#123;    string name &amp;#x3D; 1;    int32 index &amp;">
+<meta property="og:description" content="grpc 入门新建 .proto 文件，例如 helloworld.protosyntax &amp;#x3D; &amp;quot;proto3&amp;quot;;option go_package&amp;#x3D; &amp;quot;pb&amp;quot;;package helloworld;message HelloRequest &amp;#123;    string name &amp;#x3D; 1;    int32 index &amp;#">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-08T10:01:15.389Z">
+<meta property="og:updated_time" content="2019-12-09T03:35:01.421Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -35,7 +35,7 @@
         
     
     <!-- title -->
-    <title>grpc 基础（1）实现一个服务</title>
+    <title>【grpc基础】（1）实现一个服务</title>
     <!-- styles -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- persian styles -->
@@ -75,6 +75,8 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/12/09/go-struct-method/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2019/12/08/hello-world/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
@@ -90,21 +92,21 @@
     <div id="share" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/08/grpc-demo1/" target="_blank" rel="noopener"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/08/grpc-demo1/&text=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/08/grpc-demo1/&is_video=false&description=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=grpc 基础（1）实现一个服务&body=Check out this article: http://yoursite.com/2019/12/08/grpc-demo1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/08/grpc-demo1/&name=grpc 基础（1）实现一个服务&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/08/grpc-demo1/&t=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/08/grpc-demo1/&text=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/08/grpc-demo1/&is_video=false&description=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【grpc基础】（1）实现一个服务&body=Check out this article: http://yoursite.com/2019/12/08/grpc-demo1/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/08/grpc-demo1/&name=【grpc基础】（1）实现一个服务&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/08/grpc-demo1/&t=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#grpc-入门"><span class="toc-number">1.</span> <span class="toc-text">grpc 入门</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#grpc-入门"><span class="toc-number">1.</span> <span class="toc-text">grpc 入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建-proto-文件，例如-helloworld-proto"><span class="toc-number">1.1.</span> <span class="toc-text">新建 .proto 文件，例如 helloworld.proto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行如下命令编译"><span class="toc-number">1.2.</span> <span class="toc-text">执行如下命令编译</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -116,7 +118,7 @@
   <header>
     
     <h1 class="posttitle" itemprop="name headline">
-        grpc 基础（1）实现一个服务
+        【grpc基础】（1）实现一个服务
     </h1>
 
 
@@ -153,11 +155,9 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h2 id="grpc-入门"><a href="#grpc-入门" class="headerlink" title="grpc 入门"></a>grpc 入门</h2><p>新建 .proto 文件，例如 helloworld.proto</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">syntax &#x3D; &quot;proto3&quot;;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">option go_package&#x3D; &quot;pb&quot;;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">package helloworld;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">message HelloRequest &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    string name &#x3D; 1;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    int32 index &#x3D; 2;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">message HelloReply &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    string message &#x3D; 1;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 定义服务</span></pre></td></tr><tr><td class="code"><pre><span class="line">service Greeter &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    rpc SayHello(HelloRequest) returns(HelloReply)&#123;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#x2F;&#x2F; 服务端流式rpc</span></pre></td></tr><tr><td class="code"><pre><span class="line">    rpc LotsOfReplies (HelloRequest) returns (stream HelloReply)&#123;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#x2F;&#x2F; 客户端流式rpc</span></pre></td></tr><tr><td class="code"><pre><span class="line">    rpc LotsOfGreetings(stream HelloRequest) returns (HelloReply)&#123;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#x2F;&#x2F;双向流式rpc</span></pre></td></tr><tr><td class="code"><pre><span class="line">    rpc BidiHello(stream HelloRequest) returns (stream HelloReply)&#123;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+    <h2 id="grpc-入门"><a href="#grpc-入门" class="headerlink" title="grpc 入门"></a>grpc 入门</h2><h3 id="新建-proto-文件，例如-helloworld-proto"><a href="#新建-proto-文件，例如-helloworld-proto" class="headerlink" title="新建 .proto 文件，例如 helloworld.proto"></a>新建 .proto 文件，例如 helloworld.proto</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">syntax &#x3D; &quot;proto3&quot;;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">option go_package&#x3D; &quot;pb&quot;;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">package helloworld;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">message HelloRequest &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    string name &#x3D; 1;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    int32 index &#x3D; 2;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">message HelloReply &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    string message &#x3D; 1;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 定义服务</span></pre></td></tr><tr><td class="code"><pre><span class="line">service Greeter &#123;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    rpc SayHello(HelloRequest) returns(HelloReply)&#123;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#x2F;&#x2F; 服务端流式rpc</span></pre></td></tr><tr><td class="code"><pre><span class="line">    rpc LotsOfReplies (HelloRequest) returns (stream HelloReply)&#123;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#x2F;&#x2F; 客户端流式rpc</span></pre></td></tr><tr><td class="code"><pre><span class="line">    rpc LotsOfGreetings(stream HelloRequest) returns (HelloReply)&#123;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">    &#x2F;&#x2F;双向流式rpc</span></pre></td></tr><tr><td class="code"><pre><span class="line">    rpc BidiHello(stream HelloRequest) returns (stream HelloReply)&#123;&#125;</span></pre></td></tr><tr><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
 
-<p>执行如下命令编译</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">protoc pb/helloworld.proto --go_out=plugins=grpc:.</span></pre></td></tr></table></figure>
+<h3 id="执行如下命令编译"><a href="#执行如下命令编译" class="headerlink" title="执行如下命令编译"></a>执行如下命令编译</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">protoc pb/helloworld.proto --go_out=plugins=grpc:.</span></pre></td></tr></table></figure>
 
 <blockquote>
 <p>便于操作，我们编写makefile文件</p>
@@ -191,22 +191,22 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#grpc-入门"><span class="toc-number">1.</span> <span class="toc-text">grpc 入门</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#grpc-入门"><span class="toc-number">1.</span> <span class="toc-text">grpc 入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建-proto-文件，例如-helloworld-proto"><span class="toc-number">1.1.</span> <span class="toc-text">新建 .proto 文件，例如 helloworld.proto</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#执行如下命令编译"><span class="toc-number">1.2.</span> <span class="toc-text">执行如下命令编译</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
       <ul>
   <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/12/08/grpc-demo1/" target="_blank" rel="noopener"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/08/grpc-demo1/&text=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/08/grpc-demo1/&is_video=false&description=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=grpc 基础（1）实现一个服务&body=Check out this article: http://yoursite.com/2019/12/08/grpc-demo1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/08/grpc-demo1/&name=grpc 基础（1）实现一个服务&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/08/grpc-demo1/&t=grpc 基础（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/12/08/grpc-demo1/&text=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/12/08/grpc-demo1/&is_video=false&description=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=【grpc基础】（1）实现一个服务&body=Check out this article: http://yoursite.com/2019/12/08/grpc-demo1/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/12/08/grpc-demo1/&title=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/12/08/grpc-demo1/&name=【grpc基础】（1）实现一个服务&description=" target="_blank" rel="noopener"><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://news.ycombinator.com/submitlink?u=http://yoursite.com/2019/12/08/grpc-demo1/&t=【grpc基础】（1）实现一个服务" target="_blank" rel="noopener"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
 </ul>
 
     </div>
