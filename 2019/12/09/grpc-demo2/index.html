@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="mi tesoro">
 <meta property="og:description" content="Unary and Stream interceptor我想在每个 RPC 方法的前或后做某些事情，怎么做？ 本章节将要介绍的拦截器（interceptor），就能帮你在合适的地方实现这些功能 🤫 有几种方法在 gRPC 中，大类可分为两种 RPC 方法，与拦截器的对应关系是：  普通方法：一元拦截器（grpc.UnaryInterceptor） 流方法：流拦截器（grpc.StreamInte">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-12-09T09:21:25.347Z">
+<meta property="og:updated_time" content="2019-12-09T11:10:57.839Z">
 <meta name="twitter:card" content="summary">
     
     
@@ -292,11 +292,15 @@
     btn += '<i class="far fa-clone"></i>';
     btn += '</span>'; 
     // mount it!
-    $(".highlight .code pre").before(btn);
+<!--     $(".highlight .code pre").before(btn); -->
+    $(".highlight table").before(btn);
     var clip = new ClipboardJS('.btn-copy', {
-      target: function(trigger) {
-        return trigger.nextElementSibling;
-      }
+<!--       target: function(trigger) { -->
+<!--         return trigger.nextElementSibling; -->
+<!--       } -->
+      text: function(trigger) {
+              return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+            }
     });
     clip.on('success', function(e) {
       e.trigger.setAttribute('aria-label', "复制成功!");

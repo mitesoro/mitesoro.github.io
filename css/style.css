@@ -429,7 +429,7 @@ body th {
   font-size: 13px;
 }
 body td {
-  padding: 9px 8px 0;
+  padding: 0 8px;
   border-bottom: none;
 }
 @font-face {
@@ -1598,6 +1598,7 @@ code {
   color: #2bbc8a;
 }
 .highlight pre {
+  margin: 0;
   padding: 0;
   border: none;
   background: none;
